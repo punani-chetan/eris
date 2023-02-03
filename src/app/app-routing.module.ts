@@ -10,7 +10,11 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren:() => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      }
+      },
+      {
+        path: 'device',
+        loadChildren: () => import('./device/device.module').then(m => m.DeviceModule)
+      },
     ]
   }
 ];

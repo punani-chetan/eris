@@ -1,0 +1,140 @@
+<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
+  <div class="header">
+    <h1 class="title" *ngIf="isExpanded" [routerLink]="['/']">
+      ERIS
+    </h1>
+    <!-- <div *ngIf="!isExpanded">
+      <i class="bi bi-1-circle-fill"></i>
+    </div> -->
+    <div class="toggle" (click)="handleSidebarToggle()">
+      <!-- class="chevron" width="36px" height="36px" -->
+      <span class="bi-chevron">
+        <span *ngIf="isExpanded; else doubleright"><i class="bi bi-chevron-double-left"></i></span>
+        <ng-template #doubleright><i class="bi bi-chevron-double-right"></i></ng-template>
+      </span>
+      
+    </div>
+  </div>
+  <div class="content">
+    <div class="link">
+      <div class="content" [routerLink]="['/dashboard']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <i class="bi bi-speedometer2 fa-sm"></i>
+        </div>
+        <div class="title">Dashboard</div>
+      </div>
+    </div>
+    <div class="link with-children">
+      <div class="content" [routerLink]="['/device']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <i class="bi bi-hdd fa-sm"></i>
+        </div>
+        <div class="title">Device</div>
+      </div>
+      <!-- <div class="children">
+        <div class="link">
+         
+          <div class="content"  [routerLink]="['/configuration']" [queryParams]="{ 'child': '1' }" [routerLinkActive]="'active'">
+            <div class="icon">
+              <i class="bi bi-1-circle-fill"></i>
+            </div>
+            <div class="title">child 1</div>
+          </div>
+        </div>
+        <div class="link">
+          <div class="content">
+            <div class="icon">
+              <i class="bi bi-1-circle-fill"></i>
+            </div>
+            <div class="title">child 2</div>
+          </div>
+        </div>
+        <div class="link">
+          <div class="content">
+            <div class="icon">
+              <i class="bi bi-1-circle-fill"></i>
+            </div>
+            <div class="title">child 3</div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['/device/list-history']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <i class="bi bi-card-list fa-sm"></i>
+        </div>
+        <div class="title">Device History</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['/device/ota']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <i class="bi bi-snow fa-sm"></i>
+        </div>
+        <div class="title">OTA</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content">
+        <div class="icon">
+          <i class="bi bi-exclamation-diamond fa-sm"></i>
+        </div>
+        <div class="title">Alerts</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content">
+        <div class="icon">
+          <i class="bi bi-exclamation-octagon"></i>
+        </div>
+        <div class="title">Alert Configuration</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content">
+        <div class="icon">
+          <i class="bi bi-bell"></i>
+        </div>
+        <div class="title">Notification</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content">
+        <div class="icon">
+          <i class="bi bi-arrow-repeat"></i>
+        </div>
+        <div class="title">Remote Diagnosis</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['/device/totalizer-report']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <i class="bi bi-file-earmark-bar-graph"></i>
+        </div>
+        <div class="title">Totalizer Report</div>
+      </div>
+    </div>
+    <hr>
+    <div class="link">
+      <div class="content">
+        <div class="icon">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <div class="title">Profile</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content">
+        <div class="icon">
+          <i class="bi bi-box-arrow-right"></i>
+        </div>
+        <div class="title">Logout</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+  
+  </div>
+</div>

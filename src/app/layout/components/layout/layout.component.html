@@ -1,3 +1,12 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer> 
+<app-header (toggleButtonClicked)="sideBarShow($event)"></app-header>
+<div class="d-flex">
+  <app-sidebar
+    class="flex-shrink-1"
+    *ngIf="sideBarVisibility"
+    [isExpanded]="sidebarExpanded"
+    (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+  ></app-sidebar>
+  <div class="content w-100" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
+    <router-outlet></router-outlet>
+  </div>
+</div>

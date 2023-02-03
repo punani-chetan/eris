@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,6 +6,24 @@ import { Component } from '@angular/core';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
+  sidebarExpanded = true;
+  sideBarVisibility = true;
   
+  sideBarShow(event: boolean) {
+    this.sideBarVisibility = event;
+  }
+
+  ngOnInit(): void { 
+    window.addEventListener("resize", (event) => {
+      if (document.body.clientWidth >= 990) {
+        this.sidebarExpanded = true;
+        this.sideBarVisibility = true;
+      } else {
+        this.sidebarExpanded = true;
+        this.sideBarVisibility = false;
+      }
+    });
+  }
+
 }

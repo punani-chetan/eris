@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  @Input() toggleButton = true;
+  @Output() toggleButtonClicked = new EventEmitter();
+
+  public sideBar(): void {
+    this.toggleButtonClicked.emit(this.toggleButton);
+  }
 
 }

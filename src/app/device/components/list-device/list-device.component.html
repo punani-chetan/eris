@@ -1,0 +1,131 @@
+<p>list-device works!</p>
+
+<div class="row">
+  <div class="col-md-12" style="height: 46px">
+    <!-- border-bottom: 2px solid rgba(0,0,0,.15); -->
+    <span>
+      <h3>List Device</h3>
+    </span>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-12 col-xl-12">
+    <div class="row mb-3">
+      <div [ngClass]="{ 'col-4': !mobileView, 'col-6': mobileView }">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            #search
+            placeholder="Search Here"
+          />
+        </div>
+      </div>
+      <div [ngClass]="{ 'col-8': !mobileView, 'col-6': mobileView }">
+        <button class="btn btn-primary float-right">
+          <span class="me-2"><i class="bi bi-plus-square"></i></span>Add Device
+        </button>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        class="table-bordered device-table"
+      >
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            class="text-dark bg-stripe margin-left-26"
+            sortActionDescription="Sort by name"
+          >
+            Name
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.name }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mac">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            sortActionDescription="Sort by mac"
+          >
+            MAC
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.mac }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            sortActionDescription="Sort by type"
+          >
+            Type
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.type }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="rate">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            sortActionDescription="Sort by rate"
+          >
+            Rate
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.rate }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row">
+          <td class="mat-cell text-center" colspan="22">No Data Available</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <mat-paginator
+        class="mat-paginator-sticky"
+        #MatPaginator
+        [pageSizeOptions]="[10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>
+<div style="height: 56px"></div>
