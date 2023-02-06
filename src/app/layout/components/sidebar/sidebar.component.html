@@ -1,23 +1,28 @@
-<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
+<div class="sidebar" [ngClass]="{ expanded: isExpanded }">
   <div class="header">
-    <h1 class="title" *ngIf="isExpanded" [routerLink]="['/']">
-      ERIS
-    </h1>
+    <h1 class="title" *ngIf="isExpanded" [routerLink]="['/']">ERIS</h1>
     <!-- <div *ngIf="!isExpanded">
       <i class="bi bi-1-circle-fill"></i>
     </div> -->
     <div class="toggle" (click)="handleSidebarToggle()">
       <!-- class="chevron" width="36px" height="36px" -->
       <span class="bi-chevron">
-        <span *ngIf="isExpanded; else doubleright"><i class="bi bi-chevron-double-left"></i></span>
-        <ng-template #doubleright><i class="bi bi-chevron-double-right"></i></ng-template>
+        <span *ngIf="isExpanded; else doubleright"
+          ><i class="bi bi-chevron-double-left"></i
+        ></span>
+        <ng-template #doubleright
+          ><i class="bi bi-chevron-double-right"></i
+        ></ng-template>
       </span>
-      
     </div>
   </div>
   <div class="content">
     <div class="link">
-      <div class="content" [routerLink]="['/dashboard']" [routerLinkActive]="'active'">
+      <div
+        class="content"
+        [routerLink]="['/dashboard']"
+        [routerLinkActive]="'active'"
+      >
         <div class="icon">
           <i class="bi bi-speedometer2 fa-sm"></i>
         </div>
@@ -25,7 +30,11 @@
       </div>
     </div>
     <div class="link with-children">
-      <div class="content" [routerLink]="['/device']" [routerLinkActive]="'active'">
+      <div
+        class="content"
+        [routerLink]="['/device']"
+        [routerLinkActive]="'active'"
+      >
         <div class="icon">
           <i class="bi bi-hdd fa-sm"></i>
         </div>
@@ -60,7 +69,11 @@
       </div> -->
     </div>
     <div class="link">
-      <div class="content" [routerLink]="['/device/list-history']" [routerLinkActive]="'active'">
+      <div
+        class="content"
+        [routerLink]="['/device/list-history']"
+        [routerLinkActive]="'active'"
+      >
         <div class="icon">
           <i class="bi bi-card-list fa-sm"></i>
         </div>
@@ -68,7 +81,11 @@
       </div>
     </div>
     <div class="link">
-      <div class="content" [routerLink]="['/device/ota']" [routerLinkActive]="'active'">
+      <div
+        class="content"
+        [routerLink]="['/device/ota']"
+        [routerLinkActive]="'active'"
+      >
         <div class="icon">
           <i class="bi bi-snow fa-sm"></i>
         </div>
@@ -108,14 +125,18 @@
       </div>
     </div>
     <div class="link">
-      <div class="content" [routerLink]="['/device/totalizer-report']" [routerLinkActive]="'active'">
+      <div
+        class="content"
+        [routerLink]="['/device/totalizer-report']"
+        [routerLinkActive]="'active'"
+      >
         <div class="icon">
           <i class="bi bi-file-earmark-bar-graph"></i>
         </div>
         <div class="title">Totalizer Report</div>
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="link">
       <div class="content">
         <div class="icon">
@@ -132,9 +153,6 @@
         <div class="title">Logout</div>
       </div>
     </div>
-
   </div>
-  <div class="footer">
-  
-  </div>
+  <div class="footer"></div>
 </div>

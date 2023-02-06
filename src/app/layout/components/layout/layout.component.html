@@ -1,7 +1,7 @@
-<app-header (toggleButtonClicked)="sideBarShow($event)"></app-header>
+<!-- <app-header (toggleButtonClicked)="sideBarShow($event)"></app-header>
 <div class="d-flex">
   <app-sidebar
-    class="flex-shrink-1"
+    class="flex-shrink-1 sideBar"
     *ngIf="sideBarVisibility"
     [isExpanded]="sidebarExpanded"
     (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
@@ -9,4 +9,27 @@
   <div class="content w-100" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
     <router-outlet></router-outlet>
   </div>
+</div> -->
+
+<div class="container mx-0 px-0">
+  <div class="header">
+    <app-header (toggleButtonClicked)="sideBarShow($event)"></app-header>
+  </div>
+  <div class="content">
+    <div>
+      <app-sidebar
+        class="flex-shrink-1 sideBar"
+        *ngIf="sideBarVisibility"
+        [isExpanded]="sidebarExpanded"
+        (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+      ></app-sidebar>
+    </div>
+    <div
+      class="content-outlet w-100"
+      [ngClass]="{ sidebarExpanded: sidebarExpanded }"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="footer"><app-header></app-header></div>
 </div>
