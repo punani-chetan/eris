@@ -11,7 +11,7 @@
   </div>
 </div> -->
 
-<div class="container mx-0 px-0">
+<!-- <div class="container mx-0 px-0">
   <div class="header">
     <app-header (toggleButtonClicked)="sideBarShow($event)"></app-header>
   </div>
@@ -32,4 +32,41 @@
     </div>
   </div>
   <div class="footer"><app-header></app-header></div>
+</div> -->
+
+<div class="header">
+  <app-header (toggleButtonClicked)="sideBarShow($event)"></app-header>
+</div>
+<div class="content">
+  <div
+    class="d-flex bd-highlight"
+    *ngIf="sideBarVisibility; else mobileViewSideBar"
+  >
+    <div class="flex-shrink-1 bd-highlight sidebar">
+      <app-sidebar
+        class="sideBar"
+        *ngIf="sideBarVisibility"
+        [isExpanded]="sidebarExpanded"
+        (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+      ></app-sidebar>
+    </div>
+    <div
+      class="bd-highlight main-content"
+      [ngClass]="{ sidebarExpanded: sidebarExpanded }"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <ng-template #mobileViewSideBar>
+    <div
+      class="bd-highlight mobile-view-main-contain"
+      [ngClass]="{ sidebarExpanded: sidebarExpanded }"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
+</div>
+<div class="footer">
+  <app-footer></app-footer>
 </div>

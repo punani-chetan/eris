@@ -11,7 +11,7 @@
   width: 0.35em;
 }
 
-.bi-chevron{
+.bi-chevron {
   color: #ffffff;
 }
 
@@ -19,7 +19,7 @@
   // position: fixed;
   left: 0;
   top: 0;
-
+  // overflow: auto;
   // height: 100%;
   transition: 0.3s;
 
@@ -42,6 +42,7 @@
       .link {
         .content {
           .title {
+            display: block;
             max-width: 250px;
             color: #ffffff;
           }
@@ -58,7 +59,7 @@
     }
   }
 
-  background: #44A3FD;
+  background: #44a3fd;
   color: ffffff;
 
   .header {
@@ -67,7 +68,7 @@
     justify-content: center;
     padding: 5px;
 
-    background: #44A3FD;
+    background: #44a3fd;
 
     h1 {
       font-size: 20px;
@@ -106,12 +107,12 @@
     .link {
       .children {
         .content {
-          background: #44A3FD;
+          background: #44a3fd;
           // padding-left: 30px;
           padding-left: 5px;
 
           &:hover {
-            background: #F2AF4D;
+            background: #f2af4d;
             .title {
               color: white;
             }
@@ -121,7 +122,7 @@
           }
 
           &.active {
-            background: #F2AF4D;
+            background: #f2af4d;
           }
         }
       }
@@ -136,7 +137,7 @@
         transition: 0.3s;
 
         &:hover {
-          background: #F2AF4D;
+          background: #f2af4d;
           .title {
             color: white;
           }
@@ -146,7 +147,7 @@
         }
 
         &.active {
-          background: #F2AF4D;
+          background: #f2af4d;
           .title {
             color: white;
           }
@@ -162,7 +163,7 @@
         }
         .title {
           flex: 1;
-          // display: none;
+          display: none;
           color: #ffffff;
           transition: 0.3s;
           max-width: 0px;
@@ -172,4 +173,3 @@
     }
   }
 }
-
