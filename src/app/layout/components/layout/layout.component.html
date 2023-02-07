@@ -38,13 +38,10 @@
   <app-header (toggleButtonClicked)="sideBarShow($event)"></app-header>
 </div>
 <div class="content">
-  <div
-    class="d-flex bd-highlight"
-    *ngIf="sideBarVisibility; else mobileViewSideBar"
-  >
+  <div class="d-flex bd-highlight" *ngIf="!mobileView; else mobileViewSideBar">
     <div class="flex-shrink-1 bd-highlight sidebar">
       <app-sidebar
-        class="sideBar"
+        [ngClass]="{ mobileView: mobileView }"
         *ngIf="sideBarVisibility"
         [isExpanded]="sidebarExpanded"
         (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
@@ -59,6 +56,10 @@
   </div>
 
   <ng-template #mobileViewSideBar>
+    <div class="sidebar">
+      <app-sidebar *ngIf="sideBarVisibility"></app-sidebar>
+    </div>
+
     <div
       class="bd-highlight mobile-view-main-contain"
       [ngClass]="{ sidebarExpanded: sidebarExpanded }"

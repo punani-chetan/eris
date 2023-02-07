@@ -26,9 +26,10 @@
   width: 60px;
   &.expanded {
     width: 250px;
-
+    overflow: auto;
     .header {
       h1 {
+        height: 52px;
         margin-left: 0px;
       }
       .chevron {
@@ -67,7 +68,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-
+    height: 52px;
     background: #44a3fd;
 
     h1 {
@@ -76,8 +77,12 @@
       margin: 0;
       flex: 1;
       transition: 0.3s;
-
-      margin-left: -100px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      padding-left: 17px;
+      // margin-left: -100px;
     }
 
     .chevron {
@@ -130,7 +135,7 @@
         display: flex;
         // align-items: center;
         // justify-content: center;
-        padding: 14px;
+        padding: 13px;
 
         cursor: pointer;
 

@@ -10,6 +10,9 @@ import { DeviceRoutingModule } from './device-routing.module';
 import { MatTableModule } from '@angular/material/table'  
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from '../shared/shared.module';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [ 
@@ -24,7 +27,10 @@ import { MatSortModule } from '@angular/material/sort';
     DeviceRoutingModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    NgbModule,
+    SharedModule,
+    MatStepperModule
   ],
   providers: []
 })

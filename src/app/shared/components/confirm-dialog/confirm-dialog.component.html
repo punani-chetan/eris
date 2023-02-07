@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">
+    <span *ngIf="dialogData.type == 'notify'"><i class="fa fa-bell"></i></span>
+    <span *ngIf="dialogData.type == 'attention'"
+      ><i class="fa fa-exclamation-triangle"></i
+    ></span>
+    <span *ngIf="dialogData.type == 'delete'"
+      ><i class="bi bi-trash-fill"></i
+    ></span>
+    <!-- <span *ngIf="dialogData.type=='error'"><img src="assets/Error-Warning.svg"></span> -->
+    {{ dialogData.title }}
+  </h4>
+  <button
+    type="button"
+    class="close"
+    aria-describedby="modal-title"
+    (click)="modal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ng-container *ngIf="dialogData.isIconShow; else elseTemplate">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <i
+        class="display-4"
+        [ngClass]="
+          dialogData.icon
+            ? 'bi bi-check-circle text-success'
+            : 'bi bi-x-circle text-danger'
+        "
+      ></i>
+      <span class="h5 mt-2" [innerHTML]="dialogData.text"></span>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <span [innerHTML]="dialogData.text"></span>
+  </ng-template>
+
+  <div class="modal-footer">
+    <ng-container *ngIf="dialogData.isIconShow; else elseFooterTemplate">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">
+        OK
+      </button>
+    </ng-container>
+    <ng-template #elseFooterTemplate>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="modal.close('OK')"
+      >
+        Yes
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="modal.dismiss()"
+      >
+        NO
+      </button>
+    </ng-template>
+  </div>
+</div>

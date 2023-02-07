@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+  public mobileView = false;
   @Input() isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -13,4 +14,14 @@ export class SidebarComponent {
     this.toggleSidebar.emit(!this.isExpanded);
     this.isExpanded = !this.isExpanded;
   } 
+
+  ngOnInit(): void { 
+    window.addEventListener("resize", (event) => {
+      if (document.body.clientWidth >= 990) { 
+        this.mobileView = false;
+      } else {
+         this.mobileView = true;
+      }
+    });
+  }
 }

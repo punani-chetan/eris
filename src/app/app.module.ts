@@ -8,6 +8,7 @@ import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LayoutModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

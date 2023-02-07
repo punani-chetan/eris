@@ -51,7 +51,7 @@ body {
 :root {
   --topNavbarHeight: 56px;
 }
-@media (min-width: 1200px) {
+@media (min-width: 990px) {
   body {
     overflow: auto !important;
   }
@@ -61,12 +61,23 @@ body {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 990px) {
   body {
     overflow: auto !important;
   }
-  .sidebar {
-    height: calc(100% - var(--topNavbarHeight));
-    top: var(--topNavbarHeight);
+  .content {
+    margin: 0 !important;
   }
+
+  .sidebar {
+    height: calc(100% - var(--topNavbarHeight)) !important;
+    top: var(--topNavbarHeight) !important;
+    z-index: 100;
+    position: fixed;
+    overflow: auto;
+  }
+}
+
+.mat-sort-header-container {
+  justify-content: center;
 }
