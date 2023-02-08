@@ -5,3 +5,291 @@
     </div>
   </div>
 </div>
+
+<div class="row mt-3">
+  <div class="col-12 col-xl-12">
+    <form [formGroup]="historyForm">
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label class="sr-only" for="inlineFormInput">Start Date</label>
+          <div class="input-group date datepicker" style="cursor: pointer">
+            <input
+              type="text"
+              class="form-control"
+              [matDatepicker]="startTime"
+              formControlName="startDate"
+              placeholder="DD/MM/YYYY"
+              [max]="currentDate.toISOString()"
+              (click)="startTime.open()"
+              (keypress)="doNotAllow($event)"
+            />
+            <mat-datepicker #startTime></mat-datepicker>
+            <div class="input-group-append" (click)="startTime.open()">
+              <span class="input-group-text" id="basic-addon2">
+                <i style="font-size: 20px" class="bi bi-calendar-fill"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <label class="sr-only" for="inlineFormInput">End Date</label>
+          <div class="input-group date datepicker" style="cursor: pointer">
+            <input
+              type="text"
+              class="form-control"
+              [matDatepicker]="endDate"
+              formControlName="endDate"
+              (click)="endDate.open()"
+              [min]="historyForm.value.startDate"
+              [max]="currentDate.toISOString()"
+              placeholder="DD/MM/YYYY"
+              (keypress)="doNotAllow($event)"
+            />
+            <mat-datepicker #endDate></mat-datepicker>
+            <div class="input-group-append" (click)="endDate.open()">
+              <span class="input-group-text" id="basic-addon2">
+                <i style="font-size: 20px" class="bi bi-calendar-fill"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <label class="sr-only" for="inlineFormInput">Select Device</label>
+          <select
+            class="form-select"
+            style="cursor: pointer"
+            formControlName="device"
+            aria-label="Default select example"
+          >
+            <option *ngFor="let item of deviceList" [value]="item._id">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-lg-1 search-button">
+          <button
+            type="submit"
+            class="btn btn-primary mb-2"
+            [disabled]="!historyForm.valid"
+            (click)="search()"
+          >
+            Search
+          </button>
+          <button
+            *ngIf="dataSource?.data?.length && mobileView && !emailInput"
+            type="submit"
+            class="btn btn-warning mb-2 float-right ml-3"
+            (click)="fileExport()"
+          >
+            <span class="me-2"><i class="bi bi-cloud-arrow-down-fill"></i></span
+            >Export
+          </button>
+          <button
+            type="submit"
+            *ngIf="dataSource?.data?.length && mobileView && !emailInput"
+            class="btn btn-success mb-2 float-right ml-3"
+            (click)="emailInput = true"
+          >
+            <span class="me-2"><i class="bi bi-envelope-fill"></i></span>Share
+          </button>
+        </div>
+        <div
+          class="col-lg-2"
+          *ngIf="dataSource?.data?.length && mobileView && emailInput"
+        >
+          <div class="row">
+            <div class="col-8">
+              <label class="sr-only" for="inlineFormInput"
+                >Write Email Address</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                style="cursor: pointer"
+                placeholder="abc@xyz.com"
+                formControlName="email"
+              />
+            </div>
+            <div class="col-4 search-button d-flex justify-content-evenly">
+              <button
+                type="submit"
+                class="btn btn-success mb-2 float-right"
+                (click)="sendEmail()"
+                [disabled]="!historyForm.valid"
+              >
+                Send
+              </button>
+              <button
+                type="submit"
+                class="btn btn-secondary mb-2 float-right"
+                (click)="emailInput = false"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-4 search-button"
+          *ngIf="dataSource?.data?.length && !mobileView && !emailInput"
+        >
+          <button
+            type="submit"
+            class="btn btn-warning mb-2 float-right ml-3"
+            (click)="fileExport()"
+          >
+            <span class="me-2"><i class="bi bi-cloud-arrow-down-fill"></i></span
+            >Export
+          </button>
+          <button
+            type="submit"
+            class="btn btn-success mb-2 float-right ml-3"
+            (click)="emailInput = true"
+          >
+            <span class="me-2"><i class="bi bi-envelope-fill"></i></span>Share
+          </button>
+        </div>
+        <div
+          class="col-lg-2 email-input"
+          *ngIf="dataSource?.data?.length && !mobileView && emailInput"
+        >
+          <label class="sr-only" for="inlineFormInput"
+            >Write Email Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            style="cursor: pointer"
+            placeholder="abc@xyz.com"
+            formControlName="email"
+          />
+        </div>
+        <div
+          class="col-lg-2 email-button search-button d-flex justify-content-evenly"
+          *ngIf="dataSource?.data?.length && !mobileView && emailInput"
+        >
+          <button
+            type="submit"
+            class="btn btn-success mb-2 float-right"
+            [disabled]="!historyForm.valid"
+            (click)="sendEmail()"
+          >
+            Send
+          </button>
+          <button
+            type="submit"
+            class="btn btn-secondary mb-2 float-right"
+            (click)="emailInput = false"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="table-responsive">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        class="table-bordered device-table"
+      >
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            style="background-color: #eaeaea"
+            class="text-dark bg-stripe margin-left-26"
+            sortActionDescription="Sort by name"
+          >
+            Name
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.name }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mac">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            sortActionDescription="Sort by mac"
+            style="background-color: #eaeaea"
+          >
+            MAC
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.mac }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            sortActionDescription="Sort by type"
+            style="background-color: #eaeaea"
+          >
+            Type
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.type }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="rate">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            sortActionDescription="Sort by rate"
+            style="background-color: #eaeaea"
+          >
+            Rate
+          </th>
+          <td
+            mat-cell
+            class="text-truncate text-center"
+            *matCellDef="let row"
+            style="max-width: 250px; cursor: pointer"
+          >
+            {{ row.rate }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row">
+          <td class="mat-cell text-center" colspan="22">No Data Available</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <mat-paginator
+        class="mat-paginator-sticky"
+        #MatPaginator
+        [pageSizeOptions]="[10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>
+<div style="height: 56px"></div>
+<a #a target="_top"></a>

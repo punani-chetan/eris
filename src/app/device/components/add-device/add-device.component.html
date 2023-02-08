@@ -156,17 +156,7 @@
               type="number"
             />
           </div>
-          <!-- <div class="text-center"> -->
-          <!-- <button type="button" class="btn btn-outline-dark submit mt-4" matStepperPrevious
-                        style="margin-right: 15px;">
-                        <span class="ml-1"><i class="bi bi-arrow-left"
-                                style="padding-right: 8px;height: 16px;width: 16px;padding-top: 1px;"></i>Back</span>
-                    </button>
-                    <button type="button" class="btn btn-outline-primary mt-4 submit"
-                        (click)="deviceConfig(stepper)"><span>Next<i class="bi bi-arrow-right"
-                                style="padding-left: 8px;height: 16px;width: 16px;padding-top: 1px;"></i></span>
 
-                    </button> -->
           <button
             type="button"
             class="btn btn-outline-dark submit mt-4"
@@ -228,94 +218,6 @@
         </fieldset>
       </form>
     </mat-step>
-    <!-- cell Information stepper end-->
-    <!-- Threshold Information stepper start-->
-    <!-- <mat-step [stepControl]="scheduleForm">
-            <form class="cmxform" [formGroup]="scheduleForm">
-                <ng-template matStepLabel>Schedule Detail</ng-template>
-                <fieldset>
-                    comment start
-                    <div class="form-group">
-                        <label class="form-label" for="email">Type Of Schedule</label>
-                        <select class="form-control" formControlName="typeOfSchedule">
-                            <option value="d">Daily</option>
-                            <option value="m">Monthly</option>
-                            <option value="w">Weekly</option>
-                            <option value="y">Yearly</option>
-                        </select>
-                    </div>
-                    comment end
-
-                    <div class="form-group mt-3">
-                        <label for="email" class="mb-2">Start Date</label>
-                        <div class="input-group date datepicker" style="cursor: pointer;">
-                            <input type="text" class="form-control" formControlName="startDate" [matDatepicker]="picker"
-                                (click)="picker.open()" (keypress)="doNotAllow($event)" [min]="currentDate">
-                            <mat-datepicker #picker></mat-datepicker>
-                            <div class="input-group-append"  (click)="picker.open()">
-                                <span class="input-group-text" id="basic-addon2"> <i style="font-size: 20px;" class="bi bi-calendar-fill"></i></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group mt-3">
-                        <label for="email" class="mb-2">End Date</label>
-                        <div class="input-group date datepicker" style="cursor: pointer;">
-                            <input type="text" class="form-control" formControlName="endDate" [min]="currentDate" [matDatepicker]="endDate"
-                                (click)="endDate.open()" (keypress)="doNotAllow($event)">
-                            <mat-datepicker #endDate></mat-datepicker>
-                            <div class="input-group-append"  (click)="endDate.open()">
-                                <span class="input-group-text" id="basic-addon2"> <i style="font-size: 20px;" class="bi bi-calendar-fill"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="email" class="mb-2">Start Time</label>
-                        <div class="input-group" style="cursor: pointer;">
-                            <input type="text" class="form-control" formControlName="startTime"
-                                [ngxMatTimepicker]="startTime" [format]="24" (keypress)="doNotAllow($event)">
-                            <ngx-mat-timepicker #startTime [enableKeyboardInput]="false"></ngx-mat-timepicker>
-                            <div class="input-group-append"  (click)="startTime.open()">
-                                <span class="input-group-text" id="basic-addon2"> <i style="font-size: 20px;" class="bi bi-clock-fill"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="email" class="mb-2">End Time</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" formControlName="endTime"
-                                [ngxMatTimepicker]="endTime" [format]="24" (keypress)="doNotAllow($event)">
-                            <ngx-mat-timepicker #endTime [enableKeyboardInput]="false"></ngx-mat-timepicker>
-                            <div class="input-group-append" (click)="endTime.open()">
-                                <span class="input-group-text" id="basic-addon2"> <i style="font-size: 20px;"class="bi bi-clock-fill"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    comment start
-                    <div class="text-center">
-                    comment end
-                    <button type="button" class="btn btn-outline-dark submit mt-4" matStepperPrevious
-                        style="margin-right: 15px;">
-                        <span class="ml-1"><i class="bi bi-arrow-left"
-                                style="padding-right: 8px;height: 16px;width: 16px;padding-top: 1px;"></i>Back</span>
-                    </button>
-                    <button type="button" *ngIf="type === 'Add'" class="btn btn-outline-primary submit mt-4"
-                        (click)="done()">
-                        <span class="ml-1"><i class="bi bi-check2-square"
-                                style="padding-right: 8px;height: 16px;width: 16px;padding-top: 1px;"></i>Done</span>
-                    </button>
-                    <button type="button" *ngIf="type === 'Edit'" class="btn btn-outline-primary submit mt-4"
-                        (click)="update()">
-                        <span class="ml-1"><i class="bi bi-check2-square"
-                                style="padding-right: 8px;height: 16px;width: 16px;padding-top: 1px;"></i>Update</span>
-                    </button>
-                    comment start
-                    </div>
-                    comment end
-                </fieldset>
-            </form>
-        </mat-step> -->
-    <!-- Threshold Information stepper end-->
   </mat-stepper>
 </div>
 <!-- <div class="modal-footer">

@@ -1,0 +1,158 @@
+.icon {
+  padding-right: 10px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  min-width: 20px;
+  max-width: 20px;
+  border-radius: 50%;
+}
+.title {
+  font-size: 1.1em;
+  margin: 0 20px;
+}
+.bg-stripe {
+  background-color: #f6f6f6;
+}
+.form-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+select {
+  height: 43px;
+}
+.search-button {
+  margin-top: 24px;
+}
+.form-row > .col,
+.form-row > [class*="col-"] {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.item {
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 15px 0;
+}
+.progress {
+  display: flex;
+  height: 20px;
+  overflow: hidden;
+  font-size: 14px;
+  // background-color: #e9ecef;
+  border-radius: 4px;
+}
+.align-self-center {
+  align-self: center !important;
+}
+.font-16 {
+  font-size: 30px;
+  margin-right: 20px;
+}
+.font-14 {
+  font-size: 20px;
+}
+table {
+  width: 100%;
+}
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+table {
+  width: 100%;
+}
+.ml-3 {
+  margin-left: 1rem;
+}
+.mat-elevation-z8 {
+  overflow-y: auto;
+  height: 600px;
+}
+.margin-left-26 {
+  padding-left: 35px !important;
+}
+.device-table {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-paginator {
+  position: absolute;
+  bottom: 0;
+  text-align: right;
+  margin: 0 auto;
+}
+
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
+.mat-header-row {
+  border: 1 px solid black !important;
+}
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+.mr-2 {
+  margin-right: 10px;
+}
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+}
+.font-16 {
+  font-size: 16px;
+}
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 515px) {
+  .col-8 {
+    width: 100%;
+  }
+  .col-4 {
+    width: 100%;
+    margin: 0rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 1305px) {
+  .email-input {
+    width: 60% !important;
+  }
+  .email-button {
+    width: 35% !important;
+  }
+}

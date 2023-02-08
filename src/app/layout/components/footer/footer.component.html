@@ -1,1 +1,6 @@
-<p>footer works!</p>
+<div
+  class="footer footer-copyright text-center text-align-item-center py-3 text-grey cursor-pointer"
+  [ngClass]="{ 'p-l-250': !mobileView }"
+>
+  <span (click)="redirect()">Powered By Bacancy Systems LLP</span>
+</div>
