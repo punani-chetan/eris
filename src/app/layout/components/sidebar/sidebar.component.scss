@@ -22,13 +22,20 @@
   // overflow: auto;
   // height: 100%;
   transition: 0.3s;
+  display: flex;
+  flex-direction: column;
 
   width: 60px;
   &.expanded {
     width: 250px;
     overflow: auto;
-    .header {
-      h1 {
+
+    .sidebar-header {
+      bottom: 0;
+      height: 56px;
+      transition: all 0.2s ease-in-out;
+
+      .title {
         height: 52px;
         margin-left: 0px;
       }
@@ -40,6 +47,7 @@
       }
     }
     .content {
+      top: 0;
       .link {
         .content {
           .title {
@@ -63,16 +71,18 @@
   background: #44a3fd;
   color: ffffff;
 
-  .header {
+  .sidebar-header {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px;
-    height: 52px;
+    height: 56px;
     background: #44a3fd;
+    bottom: 0;
+    transition: all 0.2s ease-in-out;
 
-    h1 {
-      font-size: 20px;
+    .title {
+      font-size: 17px;
       color: #ffffff;
       margin: 0;
       flex: 1;
@@ -82,7 +92,6 @@
       align-content: center;
       flex-direction: column;
       padding-left: 17px;
-      // margin-left: -100px;
     }
 
     .chevron {
@@ -109,6 +118,8 @@
   }
 
   .content {
+    top: 0;
+
     .link {
       .children {
         .content {

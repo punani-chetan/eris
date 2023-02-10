@@ -1,11 +1,8 @@
 <div class="sidebar" [ngClass]="{ expanded: isExpanded }">
-  <div class="header">
-    <h1 class="title" *ngIf="isExpanded" [routerLink]="['/']">ERIS</h1>
-    <!-- <div *ngIf="!isExpanded">
-      <i class="bi bi-1-circle-fill"></i>
-    </div> -->
-    <div class="toggle" (click)="handleSidebarToggle()">
-      <!-- class="chevron" width="36px" height="36px" -->
+  <div class="sidebar-header" (click)="handleSidebarToggle()">
+    <div class="title" *ngIf="isExpanded">Collapse Sidebar</div>
+
+    <div class="toggle">
       <span class="bi-chevron">
         <span *ngIf="isExpanded; else doubleright"
           ><i class="bi bi-chevron-double-left"></i
@@ -40,33 +37,6 @@
         </div>
         <div class="title">Device</div>
       </div>
-      <!-- <div class="children">
-        <div class="link">
-         
-          <div class="content"  [routerLink]="['/configuration']" [queryParams]="{ 'child': '1' }" [routerLinkActive]="'active'">
-            <div class="icon">
-              <i class="bi bi-1-circle-fill"></i>
-            </div>
-            <div class="title">child 1</div>
-          </div>
-        </div>
-        <div class="link">
-          <div class="content">
-            <div class="icon">
-              <i class="bi bi-1-circle-fill"></i>
-            </div>
-            <div class="title">child 2</div>
-          </div>
-        </div>
-        <div class="link">
-          <div class="content">
-            <div class="icon">
-              <i class="bi bi-1-circle-fill"></i>
-            </div>
-            <div class="title">child 3</div>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div class="link">
       <div
@@ -136,25 +106,13 @@
         <div class="title">Totalizer Report</div>
       </div>
     </div>
-    <div *ngIf="!mobileView">
-      <!-- <div class="link">
-        <div class="content">
-          <div class="icon">
-            <i class="bi bi-person-circle"></i>
-          </div>
-          <div class="title">Profile</div>
+    <div class="link" *ngIf="mobileView">
+      <div class="content">
+        <div class="icon">
+          <i class="bi bi-box-arrow-right"></i>
         </div>
-      </div> -->
-      <div class="link">
-        <div class="content">
-          <div class="icon">
-            <i class="bi bi-box-arrow-right"></i>
-          </div>
-          <div class="title">Logout</div>
-        </div>
+        <div class="title">Logout</div>
       </div>
     </div>
   </div>
-
-  <div class="footer"></div>
 </div>

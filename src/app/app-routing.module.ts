@@ -4,6 +4,9 @@ import { LayoutComponent } from './layout/components/layout/layout.component';
 
 const routes: Routes = [
   {
+    path: '', pathMatch: 'full', redirectTo: 'dashboard'
+  },
+  {
     path: '',
     component: LayoutComponent,
     children: [
@@ -16,7 +19,8 @@ const routes: Routes = [
         loadChildren: () => import('./device/device.module').then(m => m.DeviceModule)
       },
     ]
-  }
+  },
+ 
 ];
 
 @NgModule({

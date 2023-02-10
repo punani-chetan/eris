@@ -23,5 +23,6 @@ export class SidebarComponent implements OnInit {
          this.mobileView = true;
       }
     });
+    this.mobileView = document.body.clientWidth <= 990 ? true : false;
   }
 }

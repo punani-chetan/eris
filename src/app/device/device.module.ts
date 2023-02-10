@@ -13,6 +13,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { JsonPipe } from '@angular/common';
 
 @NgModule({
   declarations: [ 
@@ -30,7 +35,12 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSortModule,
     NgbModule,
     SharedModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    NgbTimepickerModule,
+    JsonPipe
   ],
   providers: []
 })

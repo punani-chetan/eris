@@ -49,28 +49,24 @@ body {
 @import "bootstrap/scss/bootstrap";
 
 :root {
-  --topNavbarHeight: 56px;
+  --topNavbarHeight: 86px;
 }
 @media (min-width: 990px) {
-  body {
-    overflow: auto !important;
-  }
   .sidebar {
-    height: calc(100% - var(--topNavbarHeight));
+    height: calc(100%) !important;
     top: var(--topNavbarHeight);
+    z-index: 100;
+    // overflow: auto;
   }
 }
 
 @media (max-width: 990px) {
-  body {
-    overflow: auto !important;
-  }
   .content {
     margin: 0 !important;
   }
 
   .sidebar {
-    height: calc(100% - var(--topNavbarHeight)) !important;
+    height: calc(100%) !important;
     top: var(--topNavbarHeight) !important;
     z-index: 100;
     position: fixed;

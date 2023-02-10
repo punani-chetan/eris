@@ -1,6 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light me-0">
+<nav
+  class="navbar navbar-expand-lg navbar-light me-0"
+  style="background-color: #e2e3e5"
+>
   <div class="container-fluid">
-    <a href="#" class="navbar-brand">Eris </a>
+    <a href="#" class="navbar-brand" *ngIf="mobileView">Eris</a>
+    <a href="#" class="navbar-brand" *ngIf="!mobileView"
+      >Eris Energy Management System</a
+    >
     <button
       type="button"
       class="navbar-toggler"
@@ -9,18 +15,25 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-          <div class="navbar-nav">
-              <div class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    User Name <i class="bi bi-person-circle"></i>
-                  </a>
-                  <div class="dropdown-menu">
-                      <a href="#" class="dropdown-item">Profile</a>
-                      <a href="#" class="dropdown-item">Logout</a>
-                  </div>
-              </div>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarCollapse"
+    >
+      <div class="navbar-nav">
+        <div class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle m-3"
+            data-bs-toggle="dropdown"
+          >
+            User Name <i class="bi bi-person-circle"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+            <a href="#" class="dropdown-item">Profile</a>
+            <a href="#" class="dropdown-item">Logout</a>
           </div>
-      </div> -->
+        </div>
+      </div>
+    </div>
   </div>
 </nav>

@@ -252,7 +252,7 @@
             {{ row.type }}
           </td>
         </ng-container>
-        <ng-container matColumnDef="rate">
+        <ng-container matColumnDef="pi">
           <th
             mat-header-cell
             mat-sort-header
@@ -260,7 +260,7 @@
             sortActionDescription="Sort by rate"
             style="background-color: #eaeaea"
           >
-            Rate
+            Payload Interval
           </th>
           <td
             mat-cell
@@ -268,7 +268,7 @@
             *matCellDef="let row"
             style="max-width: 250px; cursor: pointer"
           >
-            {{ row.rate }}
+            {{ row.pi }}
           </td>
         </ng-container>
 

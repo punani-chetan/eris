@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Location } from '@angular/common';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { DateAdapter } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-add-device',
@@ -24,6 +25,12 @@ export class AddDeviceComponent {
   public deviceConfigSubmitted = false; // when cell form is submitted
   public pmac: string = '';
   public vmac: string = '';
+  time: NgbTimeStruct = { hour: 13, minute: 30, second: 30 };
+	seconds = true;
+
+	toggleSeconds() {
+		this.seconds = !this.seconds;
+	}
   constructor(public modal: NgbActiveModal,
     private _formBuilder: FormBuilder,
     private location: Location,
@@ -65,37 +72,34 @@ export class AddDeviceComponent {
   private initDeviceForm(): void {
     this.deviceInfoForm = this._formBuilder.group({
       name: ['', Validators.required],
-      pmac: ['', Validators.required],
-      vmac: ['', Validators.required],
-      lat: [''],
-      long: ['']
-    });
-  }
-  // this method is used to intialize cell info form.
-  private initCellInfoForm(): void {
-    this.deviceConfigForm = this._formBuilder.group({
-      operationMode: ['manual'],
-      threshold: ['', Validators.required],
-      lineSize: [''],
-      pipeSize: [''],
+      deviceType: ['', Validators.required],
+      mac: ['', Validators.required],
       payloadInterval: ['']
     });
   }
+  // this method is used to intialize cell info form.
+
   private getDeviceDetails(): void {
     let data: any = {};
-    data.name = this.deviceInfoForm.value.name;
-    if (this.deviceInfoForm.value.pmac && this.deviceInfoForm.value.pmac.includes(':')) {
-      this.deviceInfoForm.value.pmac = this.deviceInfoForm.value.pmac.replace(/:/g, '');
-    }
-    if (this.deviceInfoForm.value.vmac && this.deviceInfoForm.value.vmac.includes(':')) {
-      this.deviceInfoForm.value.vmac = this.deviceInfoForm.value.vmac.replace(/:/g, '');
-    }
-    data.pmac = this.pmac ? this.pmac : this.deviceInfoForm.value.pmac.toUpperCase();
-    data.vmac = this.vmac ? this.vmac : this.deviceInfoForm.value.vmac.toUpperCase();
-    data.operationMode = 'manual';
-    data.threshold = this.deviceConfigForm.value.threshold;
-    data.lineSize = this.deviceConfigForm.value.lineSize;
-    data.pipeSize = this.deviceConfigForm.value.pipeSize;
+    data = this.deviceInfoForm.value;
+    // if (this.deviceInfoForm.value.pmac && this.deviceInfoForm.value.pmac.includes(':')) {
+    //   this.deviceInfoForm.value.pmac = this.deviceInfoForm.value.pmac.replace(/:/g, '');
+    // }
+    // if (this.deviceInfoForm.value.vmac && this.deviceInfoForm.value.vmac.includes(':')) {
+    //   this.deviceInfoForm.value.vmac = this.deviceInfoForm.value.vmac.replace(/:/g, '');
+    // }
+    // data.pmac = this.pmac ? this.pmac : this.deviceInfoForm.value.pmac.toUpperCase();
+    // data.vmac = this.vmac ? this.vmac : this.deviceInfoForm.value.vmac.toUpperCase();
+    // data.operationMode = 'manual';
+    // data.threshold = this.deviceConfigForm.value.threshold;
+    // data.lineSize = this.deviceConfigForm.value.lineSize;
+    // data.pipeSize = this.deviceConfigForm.value.pipeSize;
+
+
+
+
+
+
     // ? moment(this.scheduleForm.value.startDate).format('DD/MM/YYYY') : ''
     // ? moment(this.scheduleForm.value.endDate).format('DD/MM/YYYY') : ''
     // data.startDate = this.scheduleForm.value.startDate;
@@ -112,10 +116,10 @@ export class AddDeviceComponent {
     // }
     // data.startTime = this.scheduleForm.value.startTime ? this.scheduleForm.value.startTime : '';
     // data.endTime = this.scheduleForm.value.endTime ? this.scheduleForm.value.endTime : '';
-    data.payloadInterval = this.deviceConfigForm.value.payloadInterval ? this.deviceConfigForm.value.payloadInterval : '';
-    if (Object.keys(this.preserveDeviceDetails).length > 0) {
-      data = this.compareObject(data);
-    }
+    // data.payloadInterval = this.deviceConfigForm.value.payloadInterval ? this.deviceConfigForm.value.payloadInterval : '';
+    // if (Object.keys(this.preserveDeviceDetails).length > 0) {
+    //   data = this.compareObject(data);
+    // }
     return data;
   }
   private compareObject(newObj: any) {
@@ -231,7 +235,6 @@ export class AddDeviceComponent {
   }
   ngOnInit(): void {
     this.initDeviceForm();
-    this.initCellInfoForm();
     // this.initScheduleForm();
     if (this.data.id) {
       this.id = this.data.id;
